@@ -1967,7 +1967,7 @@
     tailwindcss "^3.3.6"
     vite "^5.2.11"
 
-"@medusajs/admin-sdk@latest":
+"@medusajs/admin-sdk@^2.0.4":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@medusajs/admin-sdk/-/admin-sdk-2.0.4.tgz"
   integrity sha512-DcK+2KRunEZasBX9aizFBWsSMNIIZ64AOGArIBi8a4VEB7zOwwDyGD+qRo9CNxWxHD22darXP0lRDlHc7csMNQ==
@@ -2039,7 +2039,7 @@
   resolved "https://registry.npmjs.org/@medusajs/cart/-/cart-2.0.4.tgz"
   integrity sha512-kD9010sMPinv9jz1Fxmt0TghbZDXVRfMVICXJ/uSSUtcRAj/wYxUJZeOsx4gS+8wfhHsxJgts8p46TJiptoIfw==
 
-"@medusajs/cli@^2.0.0", "@medusajs/cli@latest":
+"@medusajs/cli@^2.0.0", "@medusajs/cli@^2.0.4":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@medusajs/cli/-/cli-2.0.4.tgz"
   integrity sha512-ijGWvSUo9YX16nXtLaJMZYizzFca7sjT5Rb8Gay2cGG853Oe86um8loExVdiGPU8HY7hV93Wt/CSE8+HEHAVUw==
@@ -2159,7 +2159,7 @@
   resolved "https://registry.npmjs.org/@medusajs/file/-/file-2.0.4.tgz"
   integrity sha512-4+RE3R1GAxnKhUi1hLQhJBrI8FvP0aOvL5xPGPlaWDtJ9o8p/if0iNkREvVfH1m8+dopgdZRi4/C4MtWpp38Bw==
 
-"@medusajs/framework@^2.0.0", "@medusajs/framework@latest":
+"@medusajs/framework@^2.0.0", "@medusajs/framework@^2.0.4":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@medusajs/framework/-/framework-2.0.4.tgz"
   integrity sha512-uvWye8fopAEGayNpHdej+hRHy85zXBhHpLdYWturkjzpbphXVgC2eAjzqQyePERbA+tF8GooKoxafuXcdJYJIw==
@@ -2239,7 +2239,7 @@
   resolved "https://registry.npmjs.org/@medusajs/locking/-/locking-2.0.4.tgz"
   integrity sha512-h0D6CHlox8LQLQLnAYQfuat0jbdY+O3ZWxOo3IVLHbmeWtB6nG/NHLHxpbWEzTwscTImWwYA0HK0SMbbc92/LQ==
 
-"@medusajs/medusa@^2.0.0", "@medusajs/medusa@latest":
+"@medusajs/medusa@^2.0.0", "@medusajs/medusa@^2.0.4":
   version "2.0.4"
   resolved "https://registry.npmjs.org/@medusajs/medusa/-/medusa-2.0.4.tgz"
   integrity sha512-y7gEIu1DvY4lbPkYeY6F7yu1wbRkSQ4ZCG9dVeBhgm4uDSw5+P1hvArXkltAezacNLmC0u7VzTCrKStiN0yWrQ==
