@@ -1,4 +1,8 @@
-import { ITaxProvider, TaxTypes } from "@medusajs/framework/types";
+import {
+  ITaxProvider,
+  RemoteQueryFunction,
+  TaxTypes,
+} from "@medusajs/framework/types";
 
 import { Logger } from "@medusajs/medusa";
 import TaxJarClient, { TaxJarItemLine } from "./client";
@@ -7,6 +11,7 @@ import { EntityManager } from "@mikro-orm/knex";
 type InjectedDependencies = {
   logger: Logger;
   manager: EntityManager;
+  remoteQuery: Omit<RemoteQueryFunction, symbol>;
 };
 
 type TaxJarClientOptions = {
@@ -42,10 +47,11 @@ export default class TaxJarProvider implements ITaxProvider {
     }
 
     const items: TaxJarItemLine[] = [];
-    for (const item of itemLines) {
+    for (let item of itemLines) {
       const product_tax_code = await this.getProductTaxCode(
         item.line_item.product_id
       );
+
       items.push({
         id: item.line_item.id,
         discount: 0,
@@ -55,7 +61,7 @@ export default class TaxJarProvider implements ITaxProvider {
       });
     }
 
-    const shipping = shippingLines.reduce((acc, l) => {
+    let shipping = shippingLines.reduce((acc, l) => {
       return (acc += Number(l.shipping_line.unit_price.toString()));
     }, 0);
 
@@ -95,13 +101,16 @@ export default class TaxJarProvider implements ITaxProvider {
   }
 
   private async getProductTaxCode(productId: string) {
-    const query = `select code from tax_code tc 
-      join product_product_category_taxcode_tax_code ppcttc 
-      on tc.id = ppcttc.tax_code_id 
-      join product_category_product pcp 
-      on ppcttc.product_category_id = pcp.product_category_id 
-      where pcp.product_id = ?;`;
-    const [codeObj] = await this.deps.manager.execute(query, [productId]);
-    return codeObj.code || this.defaultTaxcode || "";
+    const result = await this.deps.remoteQuery.graph({
+      entity: "product",
+      fields: ["categories.tax_code.code"],
+      filters: { id: productId },
+    });
+
+    if (!result.data.length || result.data[0].categories.length !== 1) {
+      return this.defaultTaxcode;
+    }
+
+    return result.data[0].categories[0].tax_code?.code || this.defaultTaxcode;
   }
 }
