@@ -47,7 +47,7 @@ export default class TaxJarProvider implements ITaxProvider {
     }
 
     const items: TaxJarItemLine[] = [];
-    for (let item of itemLines) {
+    for (const item of itemLines) {
       const product_tax_code = await this.getProductTaxCode(
         item.line_item.product_id
       );
@@ -61,7 +61,7 @@ export default class TaxJarProvider implements ITaxProvider {
       });
     }
 
-    let shipping = shippingLines.reduce((acc, l) => {
+    const shipping = shippingLines.reduce((acc, l) => {
       return (acc += Number(l.shipping_line.unit_price.toString()));
     }, 0);
 
