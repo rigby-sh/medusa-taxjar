@@ -19,6 +19,7 @@ module.exports = defineConfig({
     },
     {
       resolve: "@medusajs/medusa/tax",
+      dependencies: ["remoteQuery"],
       options: {
         providers: [
           {
