@@ -6,6 +6,7 @@ import {
   Modules,
 } from "@medusajs/framework/utils";
 import { AssignTaxCode } from "../../../validators";
+import { TAX_CODE_SERVICE } from "../../../../../modules/taxcode";
 
 export async function GET(req: MedusaRequest, res: MedusaResponse) {
   const categoryId = req.params.categoryId;
@@ -51,7 +52,7 @@ export async function POST(
       [Modules.PRODUCT]: {
         product_category_id: categoryId,
       },
-      ["Taxcode"]: {
+      [TAX_CODE_SERVICE]: {
         tax_code_id: data[0].tax_code.id,
       },
     });
@@ -61,7 +62,7 @@ export async function POST(
     [Modules.PRODUCT]: {
       product_category_id: categoryId,
     },
-    ["Taxcode"]: {
+    [TAX_CODE_SERVICE]: {
       tax_code_id: req.body.taxCodeId,
     },
   });

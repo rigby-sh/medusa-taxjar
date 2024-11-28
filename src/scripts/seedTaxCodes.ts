@@ -2,6 +2,7 @@ import { ExecArgs } from "@medusajs/framework/types";
 import TaxJarClient from "../modules/taxjar/client";
 import { logger } from "@medusajs/framework";
 import TaxCodeService from "../modules/taxcode/service";
+import { TAX_CODE_SERVICE } from "../modules/taxcode";
 
 export default async function seedTaxCodes({ container }: ExecArgs) {
   const taxjarClient = new TaxJarClient(
@@ -9,7 +10,7 @@ export default async function seedTaxCodes({ container }: ExecArgs) {
     container.resolve("logger")
   );
 
-  const taxCodeService = container.resolve("Taxcode") as TaxCodeService;
+  const taxCodeService = container.resolve(TAX_CODE_SERVICE) as TaxCodeService;
 
   const entries = await taxjarClient.getTaxCategories();
 
