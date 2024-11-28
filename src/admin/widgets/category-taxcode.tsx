@@ -2,8 +2,8 @@ import { defineWidgetConfig } from "@medusajs/admin-sdk";
 import { Button, Container, Heading } from "@medusajs/ui";
 import { useState, useEffect } from "react";
 import { SectionRow } from "../components/SectionRow";
-import axios from "axios";
 import { AssignCategoryTaxcodeComponent } from "../components/AssignCategoryTaxcode";
+import { sdk } from "../lib/config";
 
 const CategoryTaxcodeWidget = (props: any) => {
   const [taxCode, setTaxCode] = useState<any>({});
@@ -14,18 +14,13 @@ const CategoryTaxcodeWidget = (props: any) => {
   };
 
   useEffect(() => {
-    axios
-      .get(`/admin/category/${props.data.id}/taxcode`, {
-        withCredentials: true,
-      })
-      .then((res) => res.data)
-      .then((res) => {
-        if (res.tax_code) {
-          setTaxCode(res.tax_code);
-        } else {
-          setTaxCode({});
-        }
-      });
+    sdk.client.fetch(`/admin/category/${props.data.id}/taxcode`).then((v) => {
+      if (!!v && typeof v === "object" && "tax_code" in v) {
+        setTaxCode(v.tax_code);
+      } else {
+        setTaxCode({});
+      }
+    });
   }, [editMode]);
 
   return (

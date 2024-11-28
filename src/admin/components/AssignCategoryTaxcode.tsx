@@ -3,7 +3,7 @@ import { Button, Text } from "@medusajs/ui";
 import { SectionRow } from "./SectionRow";
 import Select from "react-dropdown-select";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { sdk } from "../lib/config";
 
 type TaxCode = {
   id: string;
@@ -34,14 +34,18 @@ export const AssignCategoryTaxcodeComponent = ({
       return;
     }
 
-    axios
-      .post(
-        `/admin/category/${categoryId}/taxcode`,
-        { taxCodeId: selectedValue.id },
-        { withCredentials: true }
-      )
+    sdk.client
+      .fetch(`/admin/category/${categoryId}/taxcode`, {
+        method: "POST",
+        body: { taxCodeId: selectedValue.id },
+      })
       .then((v) => {
-        if (v.status === 201) {
+        if (
+          !!v &&
+          typeof v === "object" &&
+          "status" in v &&
+          v.status === "created"
+        ) {
           setEditMode(false);
         } else {
           setError("Unable to assign tax code");
@@ -54,14 +58,10 @@ export const AssignCategoryTaxcodeComponent = ({
       return;
     }
 
-    axios
-      .get(`/admin/taxcodes`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        setCodes(res.data);
-        setLoading(false);
-      });
+    sdk.client.fetch(`/admin/taxcodes`).then((v) => {
+      setCodes(v as TaxCode[]);
+      setLoading(false);
+    });
   }, [loading]);
 
   return (
