@@ -1,70 +1,97 @@
-<p align="center">
-  <a href="https://www.medusajs.com">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://user-images.githubusercontent.com/59018053/229103275-b5e482bb-4601-46e6-8142-244f531cebdb.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    <img alt="Medusa logo" src="https://user-images.githubusercontent.com/59018053/229103726-e5b529a3-9b3f-4970-8a1f-c6af37f087bf.svg">
-    </picture>
+<div align="center">
+  <h1>Medusa TaxJar Integration | Rigby</h1>
+  <p>Streamline tax calculations for your Medusa store with TaxJar.</p>
+
+  <!-- Shields.io Badges -->
+  <a href="https://github.com/rigby-sh/medusa-taxjar-integration/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
   </a>
-</p>
-<h1 align="center">
-  Medusa
-</h1>
-
-<h4 align="center">
-  <a href="https://docs.medusajs.com">Documentation</a> |
-  <a href="https://www.medusajs.com">Website</a>
-</h4>
-
-<p align="center">
-  Building blocks for digital commerce
-</p>
-<p align="center">
-  <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
-    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
+  <a href="https://rigbyjs.com/en#contact">
+    <img alt="Support" src="https://img.shields.io/badge/support-contact%20author-blueviolet.svg" />
   </a>
-    <a href="https://www.producthunt.com/posts/medusa"><img src="https://img.shields.io/badge/Product%20Hunt-%231%20Product%20of%20the%20Day-%23DA552E" alt="Product Hunt"></a>
-  <a href="https://discord.gg/xpCwq3Kfn8">
-    <img src="https://img.shields.io/badge/chat-on%20discord-7289DA.svg" alt="Discord Chat" />
-  </a>
-  <a href="https://twitter.com/intent/follow?screen_name=medusajs">
-    <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Follow%20@medusajs" alt="Follow @medusajs" />
-  </a>
-</p>
 
-## Compatibility
+  <!-- Documentation and Website Links -->
+  <p>
+    <a href="https://www.medusajs.com/">Medusa</a> |
+    <a href="https://www.taxjar.com/">TaxJar</a> |
+    <a href="https://rigbyjs.com/en">Rigby</a>
+  </p>
+</div>
+<br>
 
-This starter is compatible with versions >= 1.8.0 of `@medusajs/medusa`. 
+## About the integration
 
-## Getting Started
+The **Medusa TaxJar Integration** connects [Medusa](https://www.medusajs.com/) with [TaxJar](https://www.taxjar.com/), enabling seamless automation of tax calculations for products and shipping. By leveraging this integration, you can save time and eliminate manual tax handling, allowing you to focus on your core e-commerce operations.
 
-Visit the [Quickstart Guide](https://docs.medusajs.com/learn) to set up a server.
+**Key features include:**
 
-Visit the [Docs](https://docs.medusajs.com/learn#get-started) to learn more about our system requirements.
+- **Automated tax calculations** tailored for diverse product categories.
+- **Product tax code management** to ensure tax accuracy.
+- **Real-time updates** to stay compliant with tax laws.
 
-## What is Medusa
+## Integration Overview
 
-Medusa is a set of commerce modules and tools that allow you to build rich, reliable, and performant commerce applications without reinventing core commerce logic. The modules can be customized and used to build advanced ecommerce stores, marketplaces, or any product that needs foundational commerce primitives. All modules are open-source and freely available on npm.
+### Step 1: Set up your TaxJar account
 
-Learn more about [Medusa’s architecture](https://docs.medusajs.com/learn/advanced-development/architecture/overview) and [commerce modules](https://docs.medusajs.com/learn/basics/commerce-modules) in the Docs.
+1. Create an account on [TaxJar](https://www.taxjar.com/).
+2. Obtain your **API key** and configure your business details, including nexus information.
 
-## Roadmap, Upgrades & Plugins
+### Step 2: Extend Medusa's ProductCategory Model
 
-You can view the planned, started and completed features in the [Roadmap discussion](https://github.com/medusajs/medusa/discussions/categories/roadmap).
+Enhance the ProductCategory model to include a `tax_code` property. This allows TaxJar to calculate taxes based on product categories. Follow the detailed implementation steps outlined in the [documentation](#).
 
-Follow the [Upgrade Guides](https://docs.medusajs.com/upgrade-guides/) to keep your Medusa project up-to-date.
+### Step 3: Sync Tax Codes
 
-Check out all [available Medusa plugins](https://medusajs.com/plugins/).
+Utilize the TaxJar API to fetch and seed tax codes into your database. A sample script is provided in the guide for easy seeding -> The guide link: ...
 
-## Community & Contributions
+### Step 4: Implement a Custom Tax Provider
 
-The community and core team are available in [GitHub Discussions](https://github.com/medusajs/medusa/discussions), where you can ask for support, discuss roadmap, and share ideas.
+Replace Medusa's default tax provider with a custom TaxJar provider. This step ensures that your transactions leverage TaxJar's powerful tax calculation engine.
 
-Join our [Discord server](https://discord.com/invite/medusajs) to meet other community members.
+### Step 5: Admin Configuration
 
-## Other channels
+Add a user-friendly widget in the Medusa admin panel to assign tax codes to product categories.
 
-- [GitHub Issues](https://github.com/medusajs/medusa/issues)
-- [Twitter](https://twitter.com/medusajs)
-- [LinkedIn](https://www.linkedin.com/company/medusajs)
-- [Medusa Blog](https://medusajs.com/blog/)
+### Wrapping Up
+
+By completing these steps, your Medusa store will have automated tax calculations, making tax compliance and management effortless.
+
+## Need help?
+
+If you have any questions, need help with installing or configuring the integration, or require assistance with your Medusa project—we are here to help!
+
+### About us
+
+<img src="https://rigby-web.fra1.digitaloceanspaces.com/rigby-medusa.svg" alt="Rigby Medusa Expert" width="180">
+
+We are battle-tested Medusa.js Experts & JavaScript Masters - Our software house specializes in B2B & Multi-Vendor Marketplace eCommerce development.
+
+### How can we help you?
+
+- **Consulting in the field of strategy development**
+- **Composable eCommerce development in Medusa.js**
+- **System maintenance and long-term support**
+- **Support in ongoing Medusa projects**
+- **Medusa Plugin development**
+- **Ecommerce & data migration**
+
+Check out our project featured on Medusa: https://medusajs.com/blog/patyna/
+
+### Contact us
+
+💻 [Contact us](https://rigbyjs.com/en#contact)  
+📧 hello@rigbyjs.com  
+
+## Useful Links
+
+- [Rigby blog](https://rigbyjs.com/en/blog)
+- [Medusa website](https://medusajs.com)
+- [Community Discord](https://discord.gg/medusajs)
+- [Medusa repo](https://github.com/medusajs/medusa/blob/develop/LICENSE)
+- [Medusa Docs](https://github.com/medusajs/medusa)
+- [TaxJar website](https://www.taxjar.com/)
+- [TaxJar API Docs](https://developers.taxjar.com/api/)
+
+## License
+
+Licensed under the [MIT License](https://github.com/rigby-sh/medusa-taxjar-integration/blob/main/LICENSE).
