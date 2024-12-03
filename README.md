@@ -1,3 +1,5 @@
+![Medusa Taxer Integration](https://rigby-web.fra1.digitaloceanspaces.com/medusataxjar.png)
+
 <div align="center">
   <h1>Medusa TaxJar Integration | Rigby</h1>
   <p>Streamline tax calculations for your Medusa store with TaxJar.</p>
@@ -42,7 +44,7 @@ Enhance the ProductCategory model to include a `tax_code` property. This allows 
 
 ### Step 3: Sync Tax Codes
 
-Utilize the TaxJar API to fetch and seed tax codes into your database. A sample script is provided in the guide for easy seeding -> The guide link: ...
+Utilize the TaxJar API to fetch and seed tax codes into your database. A sample script is provided in the guide for easy seeding. -> [See the guide here ->](https://rigbyjs.com/blog/medusa-taxjar)
 
 ### Step 4: Implement a Custom Tax Provider
 
